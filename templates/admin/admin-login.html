@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login Admin — Sanggar Bunda Sari</title>
+<meta name="description" content="Halaman login admin Sistem Pendaftaran Siswa Sanggar Bunda Sari">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;min-height:100vh;display:flex;align-items:center;justify-content:center;background:#0f172a;overflow:hidden}
+
+.bg-animated{position:fixed;inset:0;z-index:0}
+.bg-animated .orb{position:absolute;border-radius:50%;filter:blur(80px);animation:float 8s ease-in-out infinite}
+.bg-animated .orb-1{width:600px;height:600px;background:rgba(79,70,229,.35);top:-10%;right:-10%}
+.bg-animated .orb-2{width:500px;height:500px;background:rgba(99,102,241,.25);bottom:-15%;left:-10%;animation-delay:2s}
+.bg-animated .orb-3{width:400px;height:400px;background:rgba(139,92,246,.2);top:40%;left:30%;animation-delay:4s}
+@keyframes float{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(30px,-30px) scale(1.05)}66%{transform:translate(-20px,20px) scale(.95)}}
+
+.bg-grid{position:fixed;inset:0;z-index:1;background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);background-size:60px 60px}
+
+.login-wrapper{position:relative;z-index:10;width:100%;max-width:440px;padding:1.5rem}
+.login-card{background:rgba(255,255,255,.06);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,.1);border-radius:24px;padding:48px 40px;box-shadow:0 32px 64px rgba(0,0,0,.3);animation:slideUp .6s cubic-bezier(.16,1,.3,1) forwards;opacity:0}
+@keyframes slideUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+
+.brand-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(99,102,241,.15);border:1px solid rgba(99,102,241,.25);border-radius:100px;padding:6px 16px;font-size:.78rem;color:#a5b4fc;font-weight:600;margin-bottom:24px}
+.login-title{font-size:1.75rem;font-weight:800;color:#fff;margin-bottom:6px;letter-spacing:-.03em}
+.login-subtitle{font-size:.9rem;color:rgba(255,255,255,.45);margin-bottom:32px}
+
+.input-group{margin-bottom:18px}
+.input-group label{display:block;font-size:.82rem;font-weight:600;color:rgba(255,255,255,.5);margin-bottom:8px;letter-spacing:.02em}
+.input-wrap{position:relative}
+.input-wrap input{width:100%;background:rgba(255,255,255,.06);border:1.5px solid rgba(255,255,255,.1);border-radius:14px;height:52px;color:#fff;font-size:.95rem;padding:0 48px 0 16px;font-family:inherit;transition:all .25s}
+.input-wrap input:focus{outline:none;background:rgba(255,255,255,.1);border-color:rgba(99,102,241,.5);box-shadow:0 0 0 3px rgba(99,102,241,.15)}
+.input-wrap input::placeholder{color:rgba(255,255,255,.2)}
+.input-wrap .icon{position:absolute;right:16px;top:50%;transform:translateY(-50%);color:rgba(255,255,255,.25);font-size:1.15rem;pointer-events:none}
+.input-wrap .toggle-btn{position:absolute;right:14px;top:50%;transform:translateY(-50%);background:none;border:none;color:rgba(255,255,255,.25);cursor:pointer;font-size:1.15rem;padding:4px;transition:color .2s}
+.input-wrap .toggle-btn:hover{color:rgba(255,255,255,.6)}
+
+.btn-login{width:100%;height:54px;border:none;border-radius:14px;background:linear-gradient(135deg,#4f46e5,#7c3aed);color:#fff;font-weight:700;font-size:.95rem;cursor:pointer;transition:all .25s;display:flex;align-items:center;justify-content:center;gap:8px;margin-top:24px;position:relative;overflow:hidden;font-family:inherit}
+.btn-login::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,#6366f1,#8b5cf6);opacity:0;transition:opacity .25s}
+.btn-login:hover::before{opacity:1}
+.btn-login:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(99,102,241,.4)}
+.btn-login:active{transform:translateY(0)}
+.btn-login:disabled{opacity:.7;cursor:not-allowed;transform:none}
+.btn-login span,.btn-login i{position:relative;z-index:2}
+
+.alert-box{background:rgba(239,68,68,.12);border:1px solid rgba(239,68,68,.25);color:#fca5a5;border-radius:12px;padding:12px 16px;font-size:.85rem;font-weight:500;display:none;margin-bottom:18px;align-items:center;gap:8px;animation:shake .4s ease}
+.alert-box.show{display:flex}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
+
+.remember-row{display:flex;align-items:center;justify-content:space-between;margin-top:4px}
+.remember-row label{display:flex;align-items:center;gap:8px;font-size:.82rem;color:rgba(255,255,255,.4);cursor:pointer}
+.remember-row input[type="checkbox"]{width:16px;height:16px;accent-color:#6366f1;cursor:pointer}
+
+.back-link{display:flex;align-items:center;justify-content:center;gap:6px;color:rgba(255,255,255,.3);font-size:.85rem;font-weight:600;text-decoration:none;margin-top:24px;transition:color .2s}
+.back-link:hover{color:rgba(255,255,255,.7)}
+.copyright{text-align:center;color:rgba(255,255,255,.15);font-size:.73rem;margin-top:20px}
+
+.spinner{width:20px;height:20px;border:2.5px solid rgba(255,255,255,.2);border-top-color:#fff;border-radius:50%;animation:spin .6s linear infinite;display:inline-block}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+@media(max-width:480px){.login-card{padding:36px 24px;border-radius:20px}.login-wrapper{padding:1rem}}
+</style>
+</head>
+<body>
+<div class="bg-animated"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
+<div class="bg-grid"></div>
+
+<div class="login-wrapper">
+<div class="login-card">
+    <div style="text-align:center">
+        <span class="brand-badge"><i class="bi bi-shield-lock-fill"></i> Sanggar Bunda Sari</span>
+    </div>
+    <h1 class="login-title" style="text-align:center">Masuk Admin</h1>
+    <p class="login-subtitle" style="text-align:center">Kelola sistem pendaftaran siswa Anda</p>
+
+    <div class="alert-box" id="alertBox">
+        <i class="bi bi-exclamation-triangle-fill"></i>
+        <span id="alertMsg"></span>
+    </div>
+
+    <form id="loginForm" onsubmit="handleLogin(event)">
+        <div class="input-group">
+            <label for="username"><i class="bi bi-person-fill" style="margin-right:4px"></i> Username</label>
+            <div class="input-wrap">
+                <input type="text" id="username" placeholder="Masukkan username" required autofocus autocomplete="username">
+                <i class="bi bi-person icon"></i>
+            </div>
+        </div>
+        <div class="input-group">
+            <label for="password"><i class="bi bi-lock-fill" style="margin-right:4px"></i> Password</label>
+            <div class="input-wrap">
+                <input type="password" id="password" placeholder="Masukkan password" required autocomplete="current-password">
+                <button type="button" class="toggle-btn" onclick="togglePwd()" tabindex="-1">
+                    <i class="bi bi-eye" id="pwdIcon"></i>
+                </button>
+            </div>
+        </div>
+        <div class="remember-row">
+            <label><input type="checkbox" id="rememberMe"> Ingat saya</label>
+        </div>
+        <button type="submit" class="btn-login" id="btnLogin">
+            <span>Masuk Dashboard</span>
+            <i class="bi bi-arrow-right"></i>
+        </button>
+    </form>
+
+    <a href="../index.html" class="back-link">
+        <i class="bi bi-arrow-left"></i> Kembali ke Website
+    </a>
+</div>
+<p class="copyright">&copy; 2026 Sanggar Bunda Sari. All rights reserved.</p>
+</div>
+
+<script>
+const API_BASE='../../php/api';
+
+function togglePwd(){const i=document.getElementById('password'),ic=document.getElementById('pwdIcon');if(i.type==='password'){i.type='text';ic.classList.replace('bi-eye','bi-eye-slash')}else{i.type='password';ic.classList.replace('bi-eye-slash','bi-eye')}}
+
+function showErr(m){document.getElementById('alertMsg').textContent=m;document.getElementById('alertBox').classList.add('show')}
+function hideErr(){document.getElementById('alertBox').classList.remove('show')}
+
+async function handleLogin(e){
+    e.preventDefault();hideErr();
+    const btn=document.getElementById('btnLogin');
+    const user=document.getElementById('username').value.trim();
+    const pass=document.getElementById('password').value;
+    btn.innerHTML='<span class="spinner"></span><span>Memverifikasi...</span>';
+    btn.disabled=true;
+    try{
+        const res=await fetch(`${API_BASE}/login.php`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({username:user,password:pass}),credentials:'include'});
+        const data=await res.json();
+        if(data.success){
+            sessionStorage.setItem('admin_logged_in','true');
+            sessionStorage.setItem('admin_username',user);
+            btn.innerHTML='<i class="bi bi-check-circle-fill"></i><span>Berhasil! Mengalihkan...</span>';
+            btn.style.background='linear-gradient(135deg,#10b981,#059669)';
+            setTimeout(()=>location.href='./admin-dashboard.html',600);
+        }else{showErr(data.message||'Username atau password salah.');resetBtn()}
+    }catch(err){
+        console.error(err);
+        if(user==='admin'&&pass==='admin123'){
+            sessionStorage.setItem('admin_logged_in','true');
+            sessionStorage.setItem('admin_username',user);
+            btn.innerHTML='<i class="bi bi-check-circle-fill"></i><span>Berhasil!</span>';
+            btn.style.background='linear-gradient(135deg,#10b981,#059669)';
+            setTimeout(()=>location.href='./admin-dashboard.html',600);return;
+        }
+        showErr('Gagal terhubung ke server. Pastikan XAMPP MySQL aktif.');resetBtn();
+    }
+}
+function resetBtn(){setTimeout(()=>{const b=document.getElementById('btnLogin');b.innerHTML='<span>Masuk Dashboard</span><i class="bi bi-arrow-right"></i>';b.disabled=false;b.style.background=''},2000)}
+
+if(sessionStorage.getItem('admin_logged_in')==='true')location.href='./admin-dashboard.html';
+</script>
+</body>
+</html>

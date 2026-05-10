@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrasi Siswa - Sanggar Bunda Sari</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../static/css/style.css">
+</head>
+<body>
+    <div class="d-flex">
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar d-flex flex-column flex-shrink-0">
+            <div class="d-flex align-items-center justify-content-between p-3 w-100">
+                <a href="./index.html" class="d-flex align-items-center text-decoration-none text-dark">
+                    <div class="logo-container me-2">
+                        <img src="../static/Images/logo.png" alt="Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="logo-fallback" style="display: none;">SBS</div>
+                    </div>
+                    <div class="d-flex flex-column logo-text">
+                        <span class="fs-6 fw-bold" style="line-height:1.2">Sanggar</span>
+                        <span style="font-size:0.8rem" class="text-muted">Bunda Sari</span>
+                    </div>
+                </a>
+                <button id="sidebarToggleDesktop" class="btn btn-sm d-none d-md-flex ms-auto">
+                    <i class="bi bi-layout-sidebar-inset"></i>
+                </button>
+            </div>
+            <hr>
+            <ul class="nav nav-pills flex-column mb-auto">
+                <li class="nav-item">
+                    <a href="./index.html" class="nav-link">
+                        <i class="bi bi-house-heart-fill"></i>
+                        <span>Home</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="./students.html" class="nav-link">
+                        <i class="bi bi-people-fill"></i>
+                        <span>Data Siswa</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="./register.html" class="nav-link active" aria-current="page">
+                        <i class="bi bi-person-plus-fill"></i>
+                        <span>Registrasi</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="./programs.html" class="nav-link">
+                        <i class="bi bi-mortarboard-fill"></i>
+                        <span>Program</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="./contact.html" class="nav-link">
+                        <i class="bi bi-chat-dots-fill"></i>
+                        <span>Kontak</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="./profile.html" class="nav-link">
+                        <i class="bi bi-building-fill"></i>
+                        <span>Profil</span>
+                    </a>
+                </li>
+            </ul>
+            <hr>
+            <div class="sidebar-user-card">
+                <div class="dropdown">
+                    <a href="#" class="dropdown-toggle text-decoration-none" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="https://ui-avatars.com/api/?name=Admin&background=4f46e5&color=fff" alt="Admin" class="user-avatar">
+                        <div class="user-info">
+                            <span class="user-name">Admin</span>
+                            <span class="user-role">Administrator</span>
+                        </div>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+                        <li><a class="dropdown-item" href="./profile.html"><i class="bi bi-person me-2"></i>Profil</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#"><i class="bi bi-box-arrow-right me-2"></i>Keluar</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content flex-grow-1">
+             <!-- Mobile Header -->
+             <header class="d-md-none p-3 border-bottom d-flex align-items-center justify-content-between bg-white sticky-top" style="z-index: 999;">
+                 <div class="d-flex align-items-center">
+                     <img src="../static/Images/logo.png" alt="Logo" width="32" height="32" class="me-2">
+                     <span class="fw-bold">Sanggar Bunda Sari</span>
+                 </div>
+                 <button class="btn btn-light" onclick="toggleSidebar()">
+                     <i class="bi bi-layout-sidebar-inset"></i>
+                 </button>
+             </header>
+             
+             <div class="container-fluid p-4">
+        <div class="container-custom py-4">
+            <div class="hero-wrapper mb-4 animate-fade-in">
+                <div class="hero-card">
+                    <div class="row align-items-center">
+                        <div class="col-lg-8">
+                            <h1 class="mb-2">Registrasi Siswa Baru</h1>
+                            <p class="mb-0">Lengkapi data untuk memulai perjalanan belajar yang menyenangkan</p>
+                        </div>
+                        <div class="col-lg-4 text-end d-none d-lg-block">
+                            <i class="bi bi-pencil-square" style="font-size: 3rem; opacity: 0.5;"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-lg-8 animate-slide-up delay-100">
+                    <div class="card border-0 shadow-sm glass">
+                        <div class="card-body p-4">
+                            <h2 class="h4 fw-bold mb-4" style="color: var(--text-main);">Formulir Pendaftaran</h2>
+                            <div id="alert-container"></div>
+        
+                            <form id="registrationForm">
+                                <h5 class="text-primary mb-3 fw-bold"><i class="bi bi-person-circle me-2"></i>Data Siswa</h5>
+                                <div class="mb-3">
+                                    <label for="name" class="form-label">Nama Lengkap <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" id="name" name="name" required placeholder="Sesuai Akta Kelahiran">
+                                </div>
+        
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="nik" class="form-label">NIK</label>
+                                        <input type="text" class="form-control" id="nik" name="nik" placeholder="16 digit NIK">
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="nisn" class="form-label">NISN</label>
+                                        <input type="text" class="form-control" id="nisn" name="nisn" placeholder="Nomor Induk Siswa Nasional">
+                                    </div>
+                                </div>
+        
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="email" class="form-label">Email <span class="text-danger">*</span></label>
+                                        <input type="email" class="form-control" id="email" name="email" required placeholder="contoh@email.com">
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="phone" class="form-label">No. Telepon / WA <span class="text-danger">*</span></label>
+                                        <input type="tel" class="form-control" id="phone" name="phone" required placeholder="08xxxxxxxxxx">
+                                    </div>
+                                </div>
+        
+                                <div class="mb-3">
+                                    <label for="address" class="form-label">Alamat Lengkap <span class="text-danger">*</span></label>
+                                    <textarea class="form-control" id="address" name="address" rows="2" required placeholder="Nama jalan, RT/RW, Kelurahan, Kecamatan"></textarea>
+                                </div>
+        
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="gender" class="form-label">Jenis Kelamin <span class="text-danger">*</span></label>
+                                        <select class="form-select" id="gender" name="gender" required>
+                                            <option value="">Pilih...</option>
+                                            <option value="Laki-laki">Laki-laki</option>
+                                            <option value="Perempuan">Perempuan</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="age" class="form-label">Usia <span class="text-danger">*</span></label>
+                                        <input type="number" class="form-control" id="age" name="age" min="3" max="100" required>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="birthplace" class="form-label">Tempat Lahir</label>
+                                        <input type="text" class="form-control" id="birthplace" name="birthplace">
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="birthdate" class="form-label">Tanggal Lahir</label>
+                                        <input type="date" class="form-control" id="birthdate" name="birthdate">
+                                    </div>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label for="religion" class="form-label">Agama</label>
+                                    <select class="form-select" id="religion" name="religion">
+                                        <option value="">Pilih...</option>
+                                        <option value="Islam">Islam</option>
+                                        <option value="Kristen">Kristen</option>
+                                        <option value="Katolik">Katolik</option>
+                                        <option value="Hindu">Hindu</option>
+                                        <option value="Buddha">Buddha</option>
+                                        <option value="Konghucu">Konghucu</option>
+                                        <option value="Lainnya">Lainnya</option>
+                                    </select>
+                                </div>
+
+                                <div class="mb-4">
+                                    <label for="education_level" class="form-label">Tingkat Pendidikan Jenjang</label>
+                                    <select class="form-select" id="education_level" name="education_level" onchange="toggleSchoolFields()" required>
+                                        <option value="">Pilih Jenjang...</option>
+                                        <option value="TK/PAUD">Belum Sekolah / TK / PAUD (Untuk Calistung)</option>
+                                        <option value="SD">SD / MI (Sekolah Dasar)</option>
+                                        <option value="SMP">SMP / MTS (Sekolah Menengah Pertama)</option>
+                                    </select>
+                                </div>
+        
+                                <div id="school-info-sd" style="display: none;">
+                                    <div class="mb-3">
+                                        <label for="school_sd" class="form-label">Nama Sekolah SD/MI <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" id="school_sd" name="school_sd">
+                                    </div>
+                                </div>
+
+                                <div id="school-info-smp" style="display: none;">
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <label for="school_smp" class="form-label">Nama Sekolah SMP/MTS <span class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" id="school_smp" name="school_smp">
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label for="school_smp_address" class="form-label">Alamat Sekolah SMP</label>
+                                            <input type="text" class="form-control" id="school_smp_address" name="school_smp_address">
+                                        </div>
+                                    </div>
+                                </div>
+                                
+
+
+                                <hr class="my-4 border-light">
+
+                                <h5 class="text-primary mb-3 fw-bold"><i class="bi bi-people-fill me-2"></i>Data Orang Tua</h5>
+                                <div class="p-3 bg-light rounded-3 mb-4">
+                                    <div class="mb-3">
+                                        <label for="father_name" class="form-label">Nama Ayah</label>
+                                        <input type="text" class="form-control" id="father_name" name="father_name">
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <label for="father_job" class="form-label">Pekerjaan Ayah</label>
+                                            <input type="text" class="form-control" id="father_job" name="father_job">
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label for="father_edu" class="form-label">Pendidikan Ayah</label>
+                                            <input type="text" class="form-control" id="father_edu" name="father_edu">
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="mb-3">
+                                        <label for="mother_name" class="form-label">Nama Ibu</label>
+                                        <input type="text" class="form-control" id="mother_name" name="mother_name">
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <label for="mother_job" class="form-label">Pekerjaan Ibu</label>
+                                            <input type="text" class="form-control" id="mother_job" name="mother_job">
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label for="mother_edu" class="form-label">Pendidikan Ibu</label>
+                                            <input type="text" class="form-control" id="mother_edu" name="mother_edu">
+                                        </div>
+                                    </div>
+                                </div>
+        
+                                <h5 class="text-primary mb-3 fw-bold"><i class="bi bi-geo-alt-fill me-2"></i>Pilih Lokasi Sanggar</h5>
+                                <div class="mb-4">
+                                    <select class="form-select" id="lokasi_sanggar" name="lokasi_sanggar" required>
+                                        <option value="">Pilih Lokasi Sanggar...</option>
+                                        <option value="Cibinong">Sanggar Bunda Sari — Cibinong (Jl. Raya Mayor Oking)</option>
+                                        <option value="Inkopad">Sanggar Bunda Sari — Inkopad (Komp. Inkopad Blok C)</option>
+                                        <option value="Citeureup">Sanggar Bunda Sari — Citeureup (Jl. Raya Citeureup)</option>
+                                        <option value="Bojong Gede">Sanggar Bunda Sari — Bojong Gede (Jl. Raya Bojong Gede)</option>
+                                    </select>
+                                </div>
+
+                                <h5 class="text-primary mb-3 fw-bold"><i class="bi bi-collection-fill me-2"></i>Pilih Kelas</h5>
+                                <div class="mb-4">
+                                    <p class="text-muted small">Pilih kelas yang diminati. Sistem akan memberikan rekomendasi kelas tambahan berdasarkan pilihan Anda.</p>
+                                    <div class="border rounded-4 p-3 bg-white" id="classes-container" style="max-height: 500px; overflow-y: auto;">
+                                        <div class="text-center py-4">
+                                            <i class="bi bi-arrow-up-circle text-primary" style="font-size:2rem;"></i>
+                                            <p class="text-muted mt-2 mb-0">Pilih <strong>Jenjang Pendidikan</strong> di atas untuk menampilkan kelas yang tersedia.</p>
+                                        </div>
+                                    </div>
+                                </div>
+        
+                                <div id="recommendations-container" style="display: none;" class="mb-4">
+                                    <div class="alert alert-primary bg-primary-subtle border-0 rounded-4 p-4">
+                                        <h5 class="alert-heading fw-bold mb-3 text-primary"><i class="bi bi-stars me-2"></i>Rekomendasi Kelas (Smart Recommendation)</h5>
+                                        <p class="mb-3 text-dark">
+                                            Berdasarkan pola pendaftaran siswa lain, kami merekomendasikan kelas berikut yang sering diambil bersamaan dengan pilihan Anda:
+                                        </p>
+                                        <div id="recommendations-list" class="row g-3">
+                                            <!-- Rekomendasi akan muncul di sini -->
+                                        </div>
+                                    </div>
+                                </div>
+        
+                                <button type="submit" class="btn btn-primary w-100 py-3 fw-bold shadow-lg mt-2">
+                                    <i class="bi bi-check-lg me-2"></i>Daftar Sekarang
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 animate-slide-up delay-200">
+                    <div class="card border-0 shadow-sm mb-4 sticky-top" style="top: 100px; z-index: 900;">
+                        <div class="card-body p-4">
+                            <h3 class="h5 fw-bold mb-3">Panduan Pendaftaran</h3>
+                            <div class="alert alert-info border-0 small">
+                                <i class="bi bi-info-circle me-1"></i>
+                                Pilih <strong>Jenjang Pendidikan</strong> terlebih dahulu — daftar kelas akan otomatis menyesuaikan jenjang yang dipilih.
+                            </div>
+                            <h6 class="fw-bold text-primary mt-3 mb-2"><i class="bi bi-collection me-1"></i> Kelas Tersedia</h6>
+                            <ul class="list-unstyled mb-0">
+                                <li class="mb-2">
+                                    <span class="badge bg-primary-subtle text-primary me-1">Calistung</span>
+                                    <small class="text-muted">TK/PAUD (3-6 Tahun)</small><br>
+                                    <small>Mapel: Matematika Dasar, Bahasa Inggris Dasar</small>
+                                </li>
+                                <li class="mb-2">
+                                    <span class="badge bg-success-subtle text-success me-1">SD</span>
+                                    <small class="text-muted">Kelas 1-6</small><br>
+                                    <small>Mapel: Matematika, Bahasa Inggris</small>
+                                </li>
+                                <li class="mb-2">
+                                    <span class="badge bg-warning-subtle text-warning me-1">SMP</span>
+                                    <small class="text-muted">Kelas 7-9</small><br>
+                                    <small>Mapel: Matematika, Bahasa Inggris</small>
+                                </li>
+                                <li class="mb-0">
+                                    <span class="badge bg-danger-subtle text-danger me-1">Melukis</span>
+                                    <small class="text-muted">Kelas Anak & Remaja</small>
+                                </li>
+                            </ul>
+                            <hr class="my-3">
+                            <h6 class="fw-bold text-primary mb-2"><i class="bi bi-geo-alt me-1"></i> 4 Lokasi Sanggar</h6>
+                            <ul class="list-unstyled small mb-0">
+                                <li class="mb-1"><i class="bi bi-pin-map text-muted me-1"></i> Cibinong</li>
+                                <li class="mb-1"><i class="bi bi-pin-map text-muted me-1"></i> Inkopad</li>
+                                <li class="mb-1"><i class="bi bi-pin-map text-muted me-1"></i> Citeureup</li>
+                                <li class="mb-0"><i class="bi bi-pin-map text-muted me-1"></i> Bojong Gede</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let API_BASE = '';
+        let BACKEND_AVAILABLE = false;
+        async function resolveApiBase() {
+            const candidates = [
+                '..',
+                `${location.origin}/sistem-pendaftaran-siswa`
+            ];
+            for (const base of candidates) {
+                try {
+                    const res = await fetch(`${base}/php/api/classes.php`, { method: 'GET' });
+                    if (res.ok) {
+                        API_BASE = base;
+                        BACKEND_AVAILABLE = true;
+                        return;
+                    }
+                } catch (_) {}
+            }
+            API_BASE = candidates[0];
+            BACKEND_AVAILABLE = false;
+        }
+        let availableClasses = [];
+        let selectedClasses = [];
+
+        function toggleSchoolFields() {
+            const level = document.getElementById('education_level').value;
+            const sdSection = document.getElementById('school-info-sd');
+            const smpSection = document.getElementById('school-info-smp');
+            const sdInput = document.getElementById('school_sd');
+            const smpInput = document.getElementById('school_smp');
+
+            // Reset fields
+            sdSection.style.display = 'none';
+            smpSection.style.display = 'none';
+            sdInput.removeAttribute('required');
+            smpInput.removeAttribute('required');
+
+            if (level === 'SD') {
+                sdSection.style.display = 'block';
+                sdInput.setAttribute('required', 'required');
+            } else if (level === 'SMP') {
+                smpSection.style.display = 'block';
+                smpInput.setAttribute('required', 'required');
+            }
+
+            // Filter classes based on education level
+            filterClassesByLevel(level);
+        }
+
+        function filterClassesByLevel(level) {
+            // Reset selected classes when level changes
+            selectedClasses = [];
+            document.getElementById('recommendations-container').style.display = 'none';
+
+            if (!level) {
+                // No level selected → show prompt
+                const container = document.getElementById('classes-container');
+                container.innerHTML = `
+                    <div class="text-center py-4">
+                        <i class="bi bi-arrow-up-circle text-primary" style="font-size:2rem;"></i>
+                        <p class="text-muted mt-2 mb-0">Pilih <strong>Jenjang Pendidikan</strong> di atas untuk menampilkan kelas yang tersedia.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            // Map education level → allowed category prefixes
+            // Supports both new format (SD — Matematika) and old legacy format (Matematika, Dasar, Seni)
+            const levelCategoryMap = {
+                'TK/PAUD': ['Calistung', 'Melukis', 'Dasar', 'Seni'],
+                'SD': ['SD', 'Melukis', 'Matematika', 'Bahasa Inggris', 'Seni'],
+                'SMP': ['SMP', 'Melukis', 'Matematika', 'Bahasa Inggris', 'Seni']
+            };
+
+            const allowedPrefixes = levelCategoryMap[level] || [];
+
+            const filtered = availableClasses.filter(cls => {
+                return allowedPrefixes.some(prefix => cls.category.startsWith(prefix));
+            });
+
+            if (filtered.length === 0) {
+                const container = document.getElementById('classes-container');
+                container.innerHTML = '<div class="text-center text-muted py-4">Tidak ada kelas tersedia untuk jenjang ini.</div>';
+                return;
+            }
+
+            renderClasses(filtered);
+        }
+
+        function renderClasses(list, note) {
+            const container = document.getElementById('classes-container');
+            container.innerHTML = '';
+            
+            if (note) {
+                const noteDiv = document.createElement('div');
+                noteDiv.className = 'text-center text-muted py-3 small';
+                noteDiv.innerHTML = `<i class="bi bi-info-circle me-1"></i> ${note}`;
+                container.appendChild(noteDiv);
+            }
+
+            if (!BACKEND_AVAILABLE) {
+                const tips = document.createElement('div');
+                tips.className = 'alert alert-warning py-2 mb-3 small border-0';
+                tips.innerHTML = '<i class="bi bi-exclamation-triangle me-2"></i><strong>Backend Offline</strong> - Menampilkan data contoh/dummy.';
+                container.appendChild(tips);
+            }
+            
+            if (list.length === 0 && !note) {
+                container.innerHTML = '<div class="text-center text-muted py-4">Tidak ada kelas tersedia saat ini.</div>';
+                return;
+            }
+
+            // Create grouped views by category
+            const categoryColors = {
+                'Calistung': { bg: '#ede9fe', color: '#7c3aed', icon: 'bi-book' },
+                'SD — Matematika': { bg: '#dbeafe', color: '#2563eb', icon: 'bi-calculator' },
+                'SD — Bahasa Inggris': { bg: '#dcfce7', color: '#16a34a', icon: 'bi-translate' },
+                'SMP — Matematika': { bg: '#fef3c7', color: '#d97706', icon: 'bi-calculator-fill' },
+                'SMP — Bahasa Inggris': { bg: '#fce7f3', color: '#db2777', icon: 'bi-translate' },
+                'Melukis': { bg: '#fee2e2', color: '#dc2626', icon: 'bi-palette-fill' },
+                // Legacy category names (backwards compatibility)
+                'Dasar': { bg: '#ede9fe', color: '#7c3aed', icon: 'bi-book' },
+                'Matematika': { bg: '#dbeafe', color: '#2563eb', icon: 'bi-calculator' },
+                'Bahasa Inggris': { bg: '#dcfce7', color: '#16a34a', icon: 'bi-translate' },
+                'Seni': { bg: '#fee2e2', color: '#dc2626', icon: 'bi-palette-fill' }
+            };
+
+            // Group classes by category
+            const grouped = {};
+            list.forEach(cls => {
+                if (!grouped[cls.category]) grouped[cls.category] = [];
+                grouped[cls.category].push(cls);
+            });
+
+            Object.entries(grouped).forEach(([category, classes]) => {
+                const catStyle = categoryColors[category] || { bg: '#f1f5f9', color: '#475569', icon: 'bi-collection' };
+
+                // Category header
+                const header = document.createElement('div');
+                header.className = 'mb-2 mt-3';
+                header.innerHTML = `
+                    <div class="d-flex align-items-center gap-2 mb-2">
+                        <span class="d-inline-flex align-items-center justify-content-center rounded-circle" style="width:28px;height:28px;background:${catStyle.bg};">
+                            <i class="bi ${catStyle.icon}" style="color:${catStyle.color};font-size:14px;"></i>
+                        </span>
+                        <strong style="font-size:14px;color:${catStyle.color};">${category}</strong>
+                        <span class="badge rounded-pill" style="background:${catStyle.bg};color:${catStyle.color};font-size:11px;">${classes.length} kelas</span>
+                    </div>
+                `;
+                container.appendChild(header);
+
+                const grid = document.createElement('div');
+                grid.className = 'row g-2 mb-2';
+
+                classes.forEach(cls => {
+                    const col = document.createElement('div');
+                    col.className = 'col-md-6';
+                    col.innerHTML = `
+                    <div class="card h-100 shadow-sm class-selection-card transition-all" style="cursor: pointer; transition: all 0.2s;" onclick="toggleId('class_${cls.id}')">
+                        <div class="card-body d-flex align-items-center p-3">
+                            <div class="form-check m-0">
+                                <input class="form-check-input" type="checkbox" id="class_${cls.id}" value="${cls.id}" onchange="handleClassChange()" style="width: 1.5em; height: 1.5em; cursor: pointer;">
+                            </div>
+                            <div class="ms-3 flex-grow-1">
+                                <label class="fw-bold text-dark d-block mb-1" style="cursor: pointer;">${cls.name}</label>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <small class="text-muted"><i class="bi bi-tag me-1"></i>${cls.category}</small>
+                                    <span class="badge bg-primary-subtle text-primary border border-primary-subtle rounded-pill">
+                                        Rp ${Number(cls.price).toLocaleString('id-ID')}
+                                    </span>
+                                </div>
+                                <small class="text-muted d-block mt-1"><i class="bi bi-clock me-1"></i>${cls.schedule}</small>
+                            </div>
+                        </div>
+                    </div>
+                    `;
+                    grid.appendChild(col);
+                });
+                container.appendChild(grid);
+            });
+        }
+        
+        // Helper to toggle checkbox when clicking card
+        window.toggleId = function(id) {
+            const el = document.getElementById(id);
+            if (el && event.target !== el) {
+                el.checked = !el.checked;
+                handleClassChange();
+            }
+        };
+
+        function displayRecommendations(recommendations) {
+            const container = document.getElementById('recommendations-container');
+            const list = document.getElementById('recommendations-list');
+            
+            if (!container || !list) return;
+            
+            container.style.display = 'block';
+            list.innerHTML = '';
+
+            recommendations.forEach(rec => {
+                const col = document.createElement('div');
+                col.className = 'col-md-6';
+                
+                col.innerHTML = `
+                <div class="card h-100 border-primary border-opacity-25 shadow-sm bg-white reveal active">
+                    <div class="card-body p-3">
+                        <div class="d-flex justify-content-between align-items-start mb-2">
+                            <h6 class="card-title fw-bold text-primary mb-0">${rec.class_name}</h6>
+                            <span class="badge bg-success-subtle text-success border border-success-subtle">
+                                ${Math.round(rec.confidence * 100) / 100}% Match
+                            </span>
+                        </div>
+                        <p class="card-text small text-muted mb-2">
+                            Disarankan karena sering diambil bersamaan dengan pilihan Anda.
+                        </p>
+                        <ul class="list-unstyled small mb-3 text-secondary">
+                            <li><i class="bi bi-tag-fill me-2 text-primary opacity-50"></i>${rec.category}</li>
+                            <li><i class="bi bi-clock-fill me-2 text-primary opacity-50"></i>${rec.schedule}</li>
+                            <li><i class="bi bi-currency-dollar me-2 text-primary opacity-50"></i>Rp ${rec.price.toLocaleString('id-ID')}</li>
+                        </ul>
+                        <button type="button" class="btn btn-outline-primary btn-sm w-100 fw-bold" 
+                                onclick="addRecommendedClass('${rec.class_id}')">
+                            <i class="bi bi-plus-circle me-1"></i>Tambahkan Kelas
+                        </button>
+                    </div>
+                </div>
+                `;
+                list.appendChild(col);
+            });
+        }
+        
+        window.addRecommendedClass = function(classId) {
+             // Handle numeric or string IDs
+             let checkbox = document.getElementById(`class_${classId}`);
+             if (!checkbox) {
+                 // try searching by value if ID schema mismatch
+                 checkbox = document.querySelector(`input[value="${classId}"]`);
+             }
+             
+             if (checkbox) {
+                 checkbox.checked = true;
+                 handleClassChange();
+                 // Scroll to the checkbox
+                 checkbox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                 // Add highlight effect
+                 const card = checkbox.closest('.card');
+                 if (card) {
+                     card.classList.add('ring-2', 'ring-primary');
+                     setTimeout(() => card.classList.remove('ring-2', 'ring-primary'), 2000);
+                 }
+             }
+        };
+
+        // Form submission
+        document.getElementById('registrationForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const formData = new FormData(e.target);
+            const studentPayload = {
+                name: formData.get('name'),
+                email: formData.get('email'),
+                phone: formData.get('phone'),
+                address: formData.get('address'),
+                gender: formData.get('gender'),
+                age: parseInt(formData.get('age')),
+                education_level: formData.get('education_level'),
+                school_sd: formData.get('school_sd'),
+                school_smp: formData.get('school_smp'),
+                school_smp_address: formData.get('school_smp_address')
+            };
+
+            if (selectedClasses.length === 0) {
+                showAlert('error', 'Pilih minimal satu kelas');
+                e.target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                return;
+            }
+
+            try {
+                if (!BACKEND_AVAILABLE) {
+                    showAlert('error', 'Server belum aktif. Jalankan PHP server lalu refresh halaman.');
+                    return;
+                }
+
+                // Disable submit button to prevent double submission
+                const submitBtn = e.target.querySelector('button[type="submit"]');
+                if (submitBtn) {
+                    submitBtn.disabled = true;
+                    submitBtn.textContent = 'Mendaftarkan...';
+                }
+                // 1) Create or get student id
+                const createStudentRes = await fetch(`${API_BASE}/php/api/students.php`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(studentPayload)
+                });
+                const createStudent = await createStudentRes.json();
+                if (!createStudentRes.ok || !createStudent.success) {
+                    showAlert('error', createStudent.message || 'Gagal menyimpan data siswa');
+                    // Re-enable submit button
+                    const submitBtn = e.target.querySelector('button[type="submit"]');
+                    if (submitBtn) {
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = 'Daftar Sekarang';
+                    }
+                    return;
+                }
+
+                const studentId = createStudent.id;
+
+                // 2) Register classes for student
+                const regRes = await fetch(`${API_BASE}/php/api/register.php`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ student_id: studentId, classes: selectedClasses })
+                });
+                const result = await regRes.json();
+                
+                if (result.success) {
+                    showAlert('success', result.message || 'Registrasi berhasil! Terima kasih telah mendaftar.');
+                    // Redirect ke Home
+                    setTimeout(() => {
+                        window.location.href = './index.html';
+                    }, 2000);
+                } else {
+                    showAlert('error', result.message || 'Gagal mendaftarkan kelas');
+                    // Re-enable submit button
+                    const submitBtn = e.target.querySelector('button[type="submit"]');
+                    if (submitBtn) {
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = 'Daftar Sekarang';
+                    }
+                }
+            } catch (error) {
+                showAlert('error', 'Terjadi kesalahan saat mendaftarkan siswa. Pastikan server PHP berjalan.');
+                console.error('Error:', error);
+                // Re-enable submit button
+                const submitBtn = e.target.querySelector('button[type="submit"]');
+                if (submitBtn) {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Daftar Sekarang';
+                }
+            }
+        });
+
+        function showAlert(type, message) {
+            const container = document.getElementById('alert-container');
+            container.innerHTML = `<div class="alert alert-${type}">${message}</div>`;
+            setTimeout(() => {
+                container.innerHTML = '';
+            }, 5000);
+        }
+
+        (async () => {
+            await resolveApiBase();
+            await loadClasses();
+        })();
+        
+        async function loadClasses() {
+             const container = document.getElementById('classes-container');
+             container.innerHTML = `
+                <div class="text-center text-muted py-4">
+                    <div class="spinner-border spinner-border-sm text-primary me-2" role="status"></div>
+                    Memuat daftar kelas...
+                </div>
+             `;
+             
+             try {
+                 if (BACKEND_AVAILABLE) {
+                     const res = await fetch(`${API_BASE}/php/api/classes.php`);
+                     const data = await res.json();
+                     if (Array.isArray(data)) {
+                         availableClasses = data;
+                         // Don't render yet — wait for user to select education level
+                         const currentLevel = document.getElementById('education_level').value;
+                         if (currentLevel) {
+                             filterClassesByLevel(currentLevel);
+                         }
+                         return;
+                     }
+                 }
+             } catch (e) {
+                 console.error("Failed to load classes from backend", e);
+             }
+             
+             // Fallback
+              const DEFAULT_CLASSES = [
+                // ===== CALISTUNG (TK/PAUD) =====
+                { id: 'local-1', name: 'Calistung — Matematika Dasar', category: 'Calistung', schedule: 'Senin & Rabu 10:00', capacity: 15, price: 150000 },
+                { id: 'local-2', name: 'Calistung — Bahasa Inggris Dasar', category: 'Calistung', schedule: 'Selasa & Kamis 10:00', capacity: 15, price: 150000 },
+                // ===== SD — MATEMATIKA =====
+                { id: 'local-3', name: 'Matematika SD Kelas 1-2', category: 'SD — Matematika', schedule: 'Senin 15:00', capacity: 20, price: 200000 },
+                { id: 'local-4', name: 'Matematika SD Kelas 3-4', category: 'SD — Matematika', schedule: 'Selasa 15:00', capacity: 20, price: 200000 },
+                { id: 'local-5', name: 'Matematika SD Kelas 5-6', category: 'SD — Matematika', schedule: 'Rabu 15:00', capacity: 20, price: 200000 },
+                // ===== SD — BAHASA INGGRIS =====
+                { id: 'local-6', name: 'Bahasa Inggris SD Kelas 1-2', category: 'SD — Bahasa Inggris', schedule: 'Kamis 15:00', capacity: 20, price: 200000 },
+                { id: 'local-7', name: 'Bahasa Inggris SD Kelas 3-4', category: 'SD — Bahasa Inggris', schedule: 'Jumat 15:00', capacity: 20, price: 200000 },
+                { id: 'local-8', name: 'Bahasa Inggris SD Kelas 5-6', category: 'SD — Bahasa Inggris', schedule: 'Sabtu 09:00', capacity: 20, price: 200000 },
+                // ===== SMP — MATEMATIKA =====
+                { id: 'local-9', name: 'Matematika SMP Kelas 7', category: 'SMP — Matematika', schedule: 'Senin 16:30', capacity: 20, price: 250000 },
+                { id: 'local-10', name: 'Matematika SMP Kelas 8', category: 'SMP — Matematika', schedule: 'Selasa 16:30', capacity: 20, price: 250000 },
+                { id: 'local-11', name: 'Matematika SMP Kelas 9', category: 'SMP — Matematika', schedule: 'Rabu 16:30', capacity: 20, price: 250000 },
+                // ===== SMP — BAHASA INGGRIS =====
+                { id: 'local-12', name: 'Bahasa Inggris SMP Kelas 7', category: 'SMP — Bahasa Inggris', schedule: 'Kamis 16:30', capacity: 20, price: 250000 },
+                { id: 'local-13', name: 'Bahasa Inggris SMP Kelas 8', category: 'SMP — Bahasa Inggris', schedule: 'Jumat 16:30', capacity: 20, price: 250000 },
+                { id: 'local-14', name: 'Bahasa Inggris SMP Kelas 9', category: 'SMP — Bahasa Inggris', schedule: 'Sabtu 11:00', capacity: 20, price: 250000 },
+                // ===== MELUKIS =====
+                { id: 'local-15', name: 'Melukis — Kelas Anak (5-8 Tahun)', category: 'Melukis', schedule: 'Sabtu 09:00', capacity: 15, price: 180000 },
+                { id: 'local-16', name: 'Melukis — Kelas Remaja (9-15 Tahun)', category: 'Melukis', schedule: 'Minggu 09:00', capacity: 15, price: 180000 }
+            ];
+            availableClasses = DEFAULT_CLASSES;
+            // Don't render yet — wait for user to select education level
+            const currentLevel = document.getElementById('education_level').value;
+            if (currentLevel) {
+                filterClassesByLevel(currentLevel);
+            }
+            // else: keep the 'pilih jenjang' prompt shown
+        }
+
+        function handleClassChange() {
+            const checkboxes = document.querySelectorAll('.class-selection-card input[type="checkbox"]');
+            selectedClasses = Array.from(checkboxes)
+                .filter(cb => cb.checked)
+                .map(cb => cb.value);
+            
+            // Visual update
+            checkboxes.forEach(cb => {
+                const card = cb.closest('.card');
+                if (cb.checked) {
+                    card.classList.remove('border-light-subtle', 'bg-white');
+                    card.classList.add('border-primary', 'bg-primary-subtle');
+                } else {
+                    card.classList.remove('border-primary', 'bg-primary-subtle');
+                    card.classList.add('border-light-subtle', 'bg-white');
+                }
+            });
+
+            // Trigger Apriori recommendation check if available
+            if (selectedClasses.length > 0 && BACKEND_AVAILABLE) {
+                fetchRecommendations(selectedClasses);
+            } else {
+                 document.getElementById('recommendations-container').style.display = 'none';
+            }
+        }
+        
+        async function fetchRecommendations(currentClasses) {
+             try {
+                 const res = await fetch(`${API_BASE}/php/api/recommendations.php`, {
+                     method: 'POST',
+                     headers: {'Content-Type': 'application/json'},
+                     body: JSON.stringify({ classes: currentClasses })
+                 });
+                 if (res.ok) {
+                     const data = await res.json();
+                     if (data.success && data.recommendations.length > 0) {
+                         displayRecommendations(data.recommendations);
+                     } else {
+                         document.getElementById('recommendations-container').style.display = 'none';
+                     }
+                 }
+             } catch (e) {
+                 console.error("Error fetching recommendations", e);
+             }
+        }
+
+    </script>
+
+            <footer>
+                <div class="container-fluid px-4 px-md-5">
+                    <div class="row g-5">
+                        <!-- Brand Column -->
+                        <div class="col-lg-4 col-md-6">
+                            <div class="d-flex align-items-center gap-3 mb-4">
+                                <div class="logo-container" style="width: 42px; height: 42px;">
+                                    <img src="../static/Images/logo.png" alt="Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                    <div class="logo-fallback" style="display: none;">SBS</div>
+                                </div>
+                                <h4 class="mb-0 text-white">Sanggar Bunda Sari</h4>
+                            </div>
+                            <p class="text-white-50 mb-4">
+                                Wadah pengembangan bakat dan minat anak Indonesia. Kami percaya setiap anak memiliki potensi luar biasa yang menunggu untuk dikembangkan.
+                            </p>
+                            <div class="footer-social">
+                                <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                                <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                                <a href="#" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+                                <a href="https://wa.me/6281234567890" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+                            </div>
+                        </div>
+
+                        <!-- Quick Links -->
+                        <div class="col-lg-2 col-md-6">
+                            <h4 class="mb-4">Menu Utama</h4>
+                            <ul class="list-unstyled">
+                                <li><a href="./index.html">Home</a></li>
+                                <li><a href="./profile.html">Profil</a></li>
+                                <li><a href="./students.html">Data Siswa</a></li>
+                                <li><a href="./register.html">Pendaftaran</a></li>
+                                <li><a href="./contact.html">Kontak</a></li>
+                            </ul>
+                        </div>
+
+                        <!-- Programs -->
+                        <div class="col-lg-3 col-md-6">
+                            <h4 class="mb-4">Program Unggulan</h4>
+                            <ul class="list-unstyled">
+                                <li><a href="#">Calistung (3-6 Tahun)</a></li>
+                                <li><a href="#">Matematika Logika</a></li>
+                                <li><a href="#">English for Kids</a></li>
+                                <li><a href="#">Seni Lukis &amp; Kriya</a></li>
+                                <li><a href="#">Tari Tradisional</a></li>
+                            </ul>
+                        </div>
+
+                        <!-- Newsletter / Contact -->
+                        <div class="col-lg-3 col-md-6">
+                            <h4 class="mb-4">Tetap Terhubung</h4>
+                            <p class="text-white-50 mb-3">Dapatkan info promo dan jadwal terbaru.</p>
+                            <div class="newsletter-form">
+                                <input type="email" placeholder="Alamat Email">
+                                <button type="button" aria-label="Subscribe"><i class="bi bi-send-fill"></i></button>
+                            </div>
+                            <div class="mt-4 pt-3 border-top border-white-10">
+                                <div class="d-flex align-items-center gap-3 mb-2">
+                                    <i class="bi bi-geo-alt-fill text-primary"></i>
+                                    <span class="text-white-50">Jl. Merpati No. 123, Jakarta</span>
+                                </div>
+                                <div class="d-flex align-items-center gap-3">
+                                    <i class="bi bi-telephone-fill text-primary"></i>
+                                    <span class="text-white-50">+62 812-3456-7890</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="footer-bottom">
+                        <div class="footer-bottom-content">
+                            <p class="mb-0 text-white-50">&copy; 2024 Sanggar Bunda Sari. All rights reserved.</p>
+                            <div class="footer-links">
+                                <a href="#">Privacy Policy</a>
+                                <a href="#">Terms of Service</a>
+                                <a href="#">Cookie Settings</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+
+            <!-- Bootstrap JS -->
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+            <!-- Main Custom JS -->
+            <script src="../static/js/main.js"></script>
+
+        </main>
+    </div>
+</body>
+</html>

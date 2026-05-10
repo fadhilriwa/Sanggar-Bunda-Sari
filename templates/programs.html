@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Program - Sanggar Bunda Sari</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../static/css/style.css">
+</head>
+<body>
+    <div class="d-flex">
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar d-flex flex-column flex-shrink-0">
+            <div class="d-flex align-items-center justify-content-between p-3 w-100">
+                <a href="./index.html" class="d-flex align-items-center text-decoration-none text-dark">
+                    <div class="logo-container me-2">
+                        <img src="../static/Images/logo.png" alt="Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="logo-fallback" style="display: none;">SBS</div>
+                    </div>
+                    <div class="d-flex flex-column logo-text">
+                        <span class="fs-6 fw-bold" style="line-height:1.2">Sanggar</span>
+                        <span style="font-size:0.8rem" class="text-muted">Bunda Sari</span>
+                    </div>
+                </a>
+                <button id="sidebarToggleDesktop" class="btn btn-sm d-none d-md-flex ms-auto">
+                    <i class="bi bi-layout-sidebar-inset"></i>
+                </button>
+            </div>
+            <hr>
+            <ul class="nav nav-pills flex-column mb-auto">
+                <li class="nav-item">
+                    <a href="./index.html" class="nav-link">
+                        <i class="bi bi-house-heart-fill"></i>
+                        <span>Home</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="./students.html" class="nav-link">
+                        <i class="bi bi-people-fill"></i>
+                        <span>Data Siswa</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="./register.html" class="nav-link">
+                        <i class="bi bi-person-plus-fill"></i>
+                        <span>Registrasi</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="./programs.html" class="nav-link active" aria-current="page">
+                        <i class="bi bi-mortarboard-fill"></i>
+                        <span>Program</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="./contact.html" class="nav-link">
+                        <i class="bi bi-chat-dots-fill"></i>
+                        <span>Kontak</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="./profile.html" class="nav-link">
+                        <i class="bi bi-building-fill"></i>
+                        <span>Profil</span>
+                    </a>
+                </li>
+            </ul>
+            <hr>
+            <div class="sidebar-user-card">
+                <div class="dropdown">
+                    <a href="#" class="dropdown-toggle text-decoration-none" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="https://ui-avatars.com/api/?name=Admin&background=4f46e5&color=fff" alt="Admin" class="user-avatar">
+                        <div class="user-info">
+                            <span class="user-name">Admin</span>
+                            <span class="user-role">Administrator</span>
+                        </div>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+                        <li><a class="dropdown-item" href="./profile.html"><i class="bi bi-person me-2"></i>Profil</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#"><i class="bi bi-box-arrow-right me-2"></i>Keluar</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content flex-grow-1">
+             <!-- Mobile Header -->
+             <header class="d-md-none p-3 border-bottom d-flex align-items-center justify-content-between bg-white sticky-top" style="z-index: 999;">
+                 <div class="d-flex align-items-center">
+                     <img src="../static/Images/logo.png" alt="Logo" width="32" height="32" class="me-2">
+                     <span class="fw-bold">Sanggar Bunda Sari</span>
+                 </div>
+                 <button class="btn btn-light" onclick="toggleSidebar()">
+                     <i class="bi bi-layout-sidebar-inset"></i>
+                 </button>
+             </header>
+             
+             <div class="container-fluid p-4">
+        <div class="container-custom py-4">
+            <!-- Hero Section -->
+            <div class="hero-wrapper mb-5 animate-fade-in">
+                <div class="hero-card text-center py-5 hero-aurora position-relative">
+                    <div class="particles-container"></div>
+                    <div class="row justify-content-center position-relative" style="z-index: 2;">
+                        <div class="col-lg-8">
+                            <h1 class="mb-3">Program Unggulan</h1>
+                            <p class="lead mb-0 text-white">
+                                Berbagai pilihan program belajar dan kreativitas untuk memaksimalkan potensi anak.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Program List -->
+            </div>
+
+            <!-- Program List with Collapsible Details -->
+            <div class="row g-4 mb-5 animate-slide-up delay-100">
+                <!-- Calistung -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 border-0 shadow-sm hover-lift card-3d-tilt reveal active" style="animation-delay: 100ms">
+                         <div class="card-body p-4">
+                            <div class="icon-box bg-primary-subtle text-primary rounded-4 p-3 mb-3 d-inline-block">
+                                <i class="bi bi-book fs-3"></i>
+                            </div>
+                            <h3 class="h5 fw-bold mb-2">Calistung</h3>
+                            <span class="badge bg-primary-subtle text-primary mb-3">Usia 3–6 Tahun</span>
+                            <p class="text-muted mb-3">Program belajar membaca, menulis, dan berhitung dengan metode bermain yang menyenangkan.</p>
+                            
+                            <button class="btn btn-outline-primary w-100 rounded-pill mb-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-calistung" aria-expanded="false">
+                                Detail Program
+                            </button>
+
+                            <div class="collapse" id="collapse-calistung">
+                                <div class="card card-body bg-light border-0 p-3 small">
+                                    <h6 class="fw-bold text-primary">Tentang Program</h6>
+                                    <p class="text-muted mb-3">Persiapan masuk SD dengan metode <strong>belajar sambil bermain</strong>. Anak diajak mengenal huruf, angka, dan membaca.</p>
+                                    
+                                    <h6 class="fw-bold text-primary">Materi Belajar</h6>
+                                    <ul class="list-unstyled text-muted mb-3">
+                                        <li class="mb-1"><i class="bi bi-check2 text-primary me-1"></i> Huruf & Angka</li>
+                                        <li class="mb-1"><i class="bi bi-check2 text-primary me-1"></i> Membaca Suku Kata</li>
+                                        <li class="mb-1"><i class="bi bi-check2 text-primary me-1"></i> Berhitung Dasar</li>
+                                    </ul>
+
+                                    <h6 class="fw-bold text-primary">Info Kelas</h6>
+                                    <ul class="list-unstyled text-muted mb-3">
+                                        <li class="d-flex justify-content-between mb-1"><span>Jadwal:</span> <span class="fw-semibold">Senin & Rabu</span></li>
+                                        <li class="d-flex justify-content-between mb-1"><span>Waktu:</span> <span class="fw-semibold">09.00-10.30</span></li>
+                                        <li class="d-flex justify-content-between mb-1"><span>Biaya:</span> <span class="fw-bold text-primary">Rp 350rb/bln</span></li>
+                                    </ul>
+                                    
+                                    <a href="./register.html" class="btn btn-primary btn-sm w-100 rounded-pill">Daftar Sekarang</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Matematika Logika -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 border-0 shadow-sm hover-lift card-3d-tilt reveal active" style="animation-delay: 200ms">
+                         <div class="card-body p-4">
+                            <div class="icon-box bg-success-subtle text-success rounded-4 p-3 mb-3 d-inline-block">
+                                <i class="bi bi-calculator fs-3"></i>
+                            </div>
+                            <h3 class="h5 fw-bold mb-2">Matematika Logika</h3>
+                            <span class="badge bg-success-subtle text-success mb-3">Usia 6–12 Tahun</span>
+                            <p class="text-muted mb-3">Mengembangkan kemampuan berpikir logis dan pemecahan masalah matematika.</p>
+
+                            <button class="btn btn-outline-success w-100 rounded-pill mb-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-matematika" aria-expanded="false">
+                                Detail Program
+                            </button>
+
+                            <div class="collapse" id="collapse-matematika">
+                                <div class="card card-body bg-light border-0 p-3 small">
+                                    <h6 class="fw-bold text-success">Tentang Program</h6>
+                                    <p class="text-muted mb-3">Melatih nalar kritis melalui soal cerita dan problem solving matematika.</p>
+                                    
+                                    <h6 class="fw-bold text-success">Materi Belajar</h6>
+                                    <ul class="list-unstyled text-muted mb-3">
+                                        <li class="mb-1"><i class="bi bi-check2 text-success me-1"></i> Logika & Penalaran</li>
+                                        <li class="mb-1"><i class="bi bi-check2 text-success me-1"></i> Operasi Hitung</li>
+                                        <li class="mb-1"><i class="bi bi-check2 text-success me-1"></i> Olimpiade Math</li>
+                                    </ul>
+
+                                    <h6 class="fw-bold text-success">Info Kelas</h6>
+                                    <ul class="list-unstyled text-muted mb-3">
+                                        <li class="d-flex justify-content-between mb-1"><span>Jadwal:</span> <span class="fw-semibold">Selasa & Kamis</span></li>
+                                        <li class="d-flex justify-content-between mb-1"><span>Waktu:</span> <span class="fw-semibold">14.00-15.30</span></li>
+                                        <li class="d-flex justify-content-between mb-1"><span>Biaya:</span> <span class="fw-bold text-success">Rp 400rb/bln</span></li>
+                                    </ul>
+                                    
+                                    <a href="./register.html" class="btn btn-success btn-sm w-100 rounded-pill">Daftar Sekarang</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- English for Kids -->
+                 <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 border-0 shadow-sm hover-lift card-3d-tilt reveal active" style="animation-delay: 300ms">
+                         <div class="card-body p-4">
+                            <div class="icon-box bg-info-subtle text-info rounded-4 p-3 mb-3 d-inline-block">
+                                <i class="bi bi-translate fs-3"></i>
+                            </div>
+                            <h3 class="h5 fw-bold mb-2">English for Kids</h3>
+                            <span class="badge bg-info-subtle text-info mb-3">Usia 5–12 Tahun</span>
+                            <p class="text-muted mb-3">Pembelajaran Bahasa Inggris interaktif fokus pada percakapan sehari-hari.</p>
+
+                            <button class="btn btn-outline-info w-100 rounded-pill mb-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-english" aria-expanded="false">
+                                Detail Program
+                            </button>
+
+                            <div class="collapse" id="collapse-english">
+                                <div class="card card-body bg-light border-0 p-3 small">
+                                    <h6 class="fw-bold text-info">Tentang Program</h6>
+                                    <p class="text-muted mb-3">Belajar aktif dengan metode <em>Communicative Approach</em> melalui lagu & games.</p>
+                                    
+                                    <h6 class="fw-bold text-info">Materi Belajar</h6>
+                                    <ul class="list-unstyled text-muted mb-3">
+                                        <li class="mb-1"><i class="bi bi-check2 text-info me-1"></i> Vocabulary</li>
+                                        <li class="mb-1"><i class="bi bi-check2 text-info me-1"></i> Speaking & Listening</li>
+                                        <li class="mb-1"><i class="bi bi-check2 text-info me-1"></i> Storytelling</li>
+                                    </ul>
+
+                                    <h6 class="fw-bold text-info">Info Kelas</h6>
+                                    <ul class="list-unstyled text-muted mb-3">
+                                        <li class="d-flex justify-content-between mb-1"><span>Jadwal:</span> <span class="fw-semibold">Rabu & Jumat</span></li>
+                                        <li class="d-flex justify-content-between mb-1"><span>Waktu:</span> <span class="fw-semibold">13.00-14.30</span></li>
+                                        <li class="d-flex justify-content-between mb-1"><span>Biaya:</span> <span class="fw-bold text-info">Rp 450rb/bln</span></li>
+                                    </ul>
+                                    
+                                    <a href="./register.html" class="btn btn-info text-white btn-sm w-100 rounded-pill">Daftar Sekarang</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Seni Lukis -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 border-0 shadow-sm hover-lift card-3d-tilt reveal active" style="animation-delay: 400ms">
+                         <div class="card-body p-4">
+                            <div class="icon-box bg-warning-subtle text-warning rounded-4 p-3 mb-3 d-inline-block">
+                                <i class="bi bi-palette fs-3"></i>
+                            </div>
+                            <h3 class="h5 fw-bold mb-2">Seni Lukis & Kriya</h3>
+                            <span class="badge bg-warning-subtle text-warning mb-3">Usia 4–12 Tahun</span>
+                            <p class="text-muted mb-3">Wadah ekspresi diri melalui warna dan bentuk, melatih motorik halus.</p>
+
+                            <button class="btn btn-outline-warning w-100 rounded-pill mb-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-seni" aria-expanded="false">
+                                Detail Program
+                            </button>
+
+                            <div class="collapse" id="collapse-seni">
+                                <div class="card card-body bg-light border-0 p-3 small">
+                                    <h6 class="fw-bold text-warning">Tentang Program</h6>
+                                    <p class="text-muted mb-3">Mengembangkan kreativitas & imajinasi melalui berbagai media seni.</p>
+                                    
+                                    <h6 class="fw-bold text-warning">Materi Belajar</h6>
+                                    <ul class="list-unstyled text-muted mb-3">
+                                        <li class="mb-1"><i class="bi bi-check2 text-warning me-1"></i> Menggambar</li>
+                                        <li class="mb-1"><i class="bi bi-check2 text-warning me-1"></i> Melukis (Cat Air)</li>
+                                        <li class="mb-1"><i class="bi bi-check2 text-warning me-1"></i> Kerajinan Tangan</li>
+                                    </ul>
+
+                                    <h6 class="fw-bold text-warning">Info Kelas</h6>
+                                    <ul class="list-unstyled text-muted mb-3">
+                                        <li class="d-flex justify-content-between mb-1"><span>Jadwal:</span> <span class="fw-semibold">Sabtu</span></li>
+                                        <li class="d-flex justify-content-between mb-1"><span>Waktu:</span> <span class="fw-semibold">09.00-11.00</span></li>
+                                        <li class="d-flex justify-content-between mb-1"><span>Biaya:</span> <span class="fw-bold text-warning">Rp 300rb/bln</span></li>
+                                    </ul>
+                                    
+                                    <a href="./register.html" class="btn btn-warning btn-sm w-100 rounded-pill">Daftar Sekarang</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tari Tradisional -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 border-0 shadow-sm hover-lift card-3d-tilt reveal active" style="animation-delay: 500ms">
+                         <div class="card-body p-4">
+                            <div class="icon-box bg-danger-subtle text-danger rounded-4 p-3 mb-3 d-inline-block">
+                                <i class="bi bi-music-note-beamed fs-3"></i>
+                            </div>
+                            <h3 class="h5 fw-bold mb-2">Tari Tradisional</h3>
+                            <span class="badge bg-danger-subtle text-danger mb-3">Usia 5–15 Tahun</span>
+                            <p class="text-muted mb-3">Mengenalkan kekayaan budaya Indonesia melalui gerak tari.</p>
+
+                            <button class="btn btn-outline-danger w-100 rounded-pill mb-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-tari" aria-expanded="false">
+                                Detail Program
+                            </button>
+
+                            <div class="collapse" id="collapse-tari">
+                                <div class="card card-body bg-light border-0 p-3 small">
+                                    <h6 class="fw-bold text-danger">Tentang Program</h6>
+                                    <p class="text-muted mb-3">Melatih kelenturan, disiplin, dan percaya diri lewat seni tari.</p>
+                                    
+                                    <h6 class="fw-bold text-danger">Materi Belajar</h6>
+                                    <ul class="list-unstyled text-muted mb-3">
+                                        <li class="mb-1"><i class="bi bi-check2 text-danger me-1"></i> Tari Nusantara</li>
+                                        <li class="mb-1"><i class="bi bi-check2 text-danger me-1"></i> Olah Tubuh</li>
+                                        <li class="mb-1"><i class="bi bi-check2 text-danger me-1"></i> Pentas Seni</li>
+                                    </ul>
+
+                                    <h6 class="fw-bold text-danger">Info Kelas</h6>
+                                    <ul class="list-unstyled text-muted mb-3">
+                                        <li class="d-flex justify-content-between mb-1"><span>Jadwal:</span> <span class="fw-semibold">Sabtu</span></li>
+                                        <li class="d-flex justify-content-between mb-1"><span>Waktu:</span> <span class="fw-semibold">13.00-15.00</span></li>
+                                        <li class="d-flex justify-content-between mb-1"><span>Biaya:</span> <span class="fw-bold text-danger">Rp 350rb/bln</span></li>
+                                    </ul>
+                                    
+                                    <a href="./register.html" class="btn btn-danger btn-sm w-100 rounded-pill">Daftar Sekarang</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sempoa & Mental Aritmetika -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 border-0 shadow-sm hover-lift card-3d-tilt reveal active" style="animation-delay: 600ms">
+                         <div class="card-body p-4">
+                            <div class="icon-box bg-secondary-subtle text-secondary rounded-4 p-3 mb-3 d-inline-block">
+                                <i class="bi bi-grid-3x3 fs-3"></i>
+                            </div>
+                            <h3 class="h5 fw-bold mb-2">Sempoa & Aritmetika</h3>
+                            <span class="badge bg-secondary-subtle text-secondary mb-3">Usia 5–10 Tahun</span>
+                            <p class="text-muted mb-3">Melatih kecepatan dan ketepatan berhitung dengan teknik sempoa.</p>
+
+                            <button class="btn btn-outline-secondary w-100 rounded-pill mb-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-sempoa" aria-expanded="false">
+                                Detail Program
+                            </button>
+
+                            <div class="collapse" id="collapse-sempoa">
+                                <div class="card card-body bg-light border-0 p-3 small">
+                                    <h6 class="fw-bold text-secondary">Tentang Program</h6>
+                                    <p class="text-muted mb-3">Meningkatkan konsentrasi dan daya ingat melalui mental aritmetika.</p>
+                                    
+                                    <h6 class="fw-bold text-secondary">Materi Belajar</h6>
+                                    <ul class="list-unstyled text-muted mb-3">
+                                        <li class="mb-1"><i class="bi bi-check2 text-secondary me-1"></i> Teknik Sempoa</li>
+                                        <li class="mb-1"><i class="bi bi-check2 text-secondary me-1"></i> Mental Aritmetika</li>
+                                        <li class="mb-1"><i class="bi bi-check2 text-secondary me-1"></i> Lomba Berhitung</li>
+                                    </ul>
+
+                                    <h6 class="fw-bold text-secondary">Info Kelas</h6>
+                                    <ul class="list-unstyled text-muted mb-3">
+                                        <li class="d-flex justify-content-between mb-1"><span>Jadwal:</span> <span class="fw-semibold">Jumat</span></li>
+                                        <li class="d-flex justify-content-between mb-1"><span>Waktu:</span> <span class="fw-semibold">15.30-17.00</span></li>
+                                        <li class="d-flex justify-content-between mb-1"><span>Biaya:</span> <span class="fw-bold text-secondary">Rp 375rb/bln</span></li>
+                                    </ul>
+                                    
+                                    <a href="./register.html" class="btn btn-secondary btn-sm w-100 rounded-pill">Daftar Sekarang</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Perbandingan Program -->
+            <div class="card border-0 shadow-sm mb-4 overflow-hidden">
+                <div class="card-body p-4">
+                    <h4 class="fw-bold mb-4 text-center"><i class="bi bi-table me-2"></i>Perbandingan Program</h4>
+                    <div class="table-responsive">
+                        <table class="table table-hover align-middle text-center mb-0">
+                            <thead class="table-light">
+                                <tr>
+                                    <th class="text-start">Program</th>
+                                    <th>Usia</th>
+                                    <th>Jadwal</th>
+                                    <th>Durasi</th>
+                                    <th>Kapasitas</th>
+                                    <th>Biaya/Bulan</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="text-start fw-semibold"><i class="bi bi-book text-primary me-2"></i>Calistung</td>
+                                    <td><span class="badge bg-primary-subtle text-primary">3–6 thn</span></td>
+                                    <td class="small">Sen & Rab</td>
+                                    <td class="small">90 min</td>
+                                    <td>10</td>
+                                    <td class="fw-bold text-primary">Rp 350.000</td>
+                                    <td><a href="./register.html" class="btn btn-sm btn-outline-primary rounded-pill">Daftar</a></td>
+                                </tr>
+                                <tr>
+                                    <td class="text-start fw-semibold"><i class="bi bi-calculator text-success me-2"></i>Matematika Logika</td>
+                                    <td><span class="badge bg-success-subtle text-success">6–12 thn</span></td>
+                                    <td class="small">Sel & Kam</td>
+                                    <td class="small">90 min</td>
+                                    <td>12</td>
+                                    <td class="fw-bold text-success">Rp 400.000</td>
+                                    <td><a href="./register.html" class="btn btn-sm btn-outline-success rounded-pill">Daftar</a></td>
+                                </tr>
+                                <tr>
+                                    <td class="text-start fw-semibold"><i class="bi bi-translate text-info me-2"></i>English for Kids</td>
+                                    <td><span class="badge bg-info-subtle text-info">5–12 thn</span></td>
+                                    <td class="small">Rab & Jum</td>
+                                    <td class="small">90 min</td>
+                                    <td>10</td>
+                                    <td class="fw-bold text-info">Rp 450.000</td>
+                                    <td><a href="./register.html" class="btn btn-sm btn-outline-info rounded-pill">Daftar</a></td>
+                                </tr>
+                                <tr>
+                                    <td class="text-start fw-semibold"><i class="bi bi-palette text-warning me-2"></i>Seni Lukis & Kriya</td>
+                                    <td><span class="badge bg-warning-subtle text-warning">4–12 thn</span></td>
+                                    <td class="small">Sabtu</td>
+                                    <td class="small">120 min</td>
+                                    <td>15</td>
+                                    <td class="fw-bold text-warning">Rp 300.000</td>
+                                    <td><a href="./register.html" class="btn btn-sm btn-outline-warning rounded-pill">Daftar</a></td>
+                                </tr>
+                                <tr>
+                                    <td class="text-start fw-semibold"><i class="bi bi-music-note-beamed text-danger me-2"></i>Tari Tradisional</td>
+                                    <td><span class="badge bg-danger-subtle text-danger">5–15 thn</span></td>
+                                    <td class="small">Sabtu</td>
+                                    <td class="small">120 min</td>
+                                    <td>20</td>
+                                    <td class="fw-bold text-danger">Rp 350.000</td>
+                                    <td><a href="./register.html" class="btn btn-sm btn-outline-danger rounded-pill">Daftar</a></td>
+                                </tr>
+                                <tr>
+                                    <td class="text-start fw-semibold"><i class="bi bi-grid-3x3 text-secondary me-2"></i>Sempoa</td>
+                                    <td><span class="badge bg-secondary-subtle text-secondary">5–10 thn</span></td>
+                                    <td class="small">Jumat</td>
+                                    <td class="small">90 min</td>
+                                    <td>10</td>
+                                    <td class="fw-bold text-secondary">Rp 375.000</td>
+                                    <td><a href="./register.html" class="btn btn-sm btn-outline-secondary rounded-pill">Daftar</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <!-- Call to Action -->
+            <div class="card border-0 shadow-sm bg-indigo text-white overflow-hidden p-5 text-center">
+                <div class="position-absolute top-0 start-0 w-100 h-100 bg-gradient-overlay"></div>
+                <div class="position-relative z-1">
+                    <h2 class="fw-bold mb-3">Bergabunglah Sekarang!</h2>
+                    <p class="lead mb-4 text-white-50">Daftarkan putra-putri Anda dan kembangkan potensi mereka bersama kami.</p>
+                    <div class="d-flex justify-content-center gap-3 flex-wrap">
+                        <a href="./register.html" class="btn btn-light btn-lg px-5 fw-bold text-indigo rounded-pill">
+                            <i class="bi bi-pencil-square me-2"></i>Daftar Online
+                        </a>
+                        <a href="./contact.html" class="btn btn-outline-light btn-lg px-5 fw-bold rounded-pill">
+                            <i class="bi bi-whatsapp me-2"></i>Hubungi Kami
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    <footer>
+        <div class="container-fluid px-4 px-md-5">
+            <div class="row g-5">
+                <!-- Brand Column -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="d-flex align-items-center gap-3 mb-4">
+                        <div class="logo-container" style="width: 42px; height: 42px;">
+                            <img src="../static/Images/logo.png" alt="Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="logo-fallback" style="display: none;">SBS</div>
+                        </div>
+                        <h4 class="mb-0 text-white">Sanggar Bunda Sari</h4>
+                    </div>
+                    <p class="text-white-50 mb-4">
+                        Wadah pengembangan bakat dan minat anak Indonesia. Kami percaya setiap anak memiliki potensi luar biasa yang menunggu untuk dikembangkan.
+                    </p>
+                    <div class="footer-social">
+                        <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+                        <a href="https://wa.me/6281234567890" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="col-lg-2 col-md-6">
+                    <h4 class="mb-4">Menu Utama</h4>
+                    <ul class="list-unstyled">
+                        <li><a href="./index.html">Home</a></li>
+                        <li><a href="./profile.html">Profil</a></li>
+                        <li><a href="./students.html">Data Siswa</a></li>
+                        <li><a href="./register.html">Pendaftaran</a></li>
+                        <li><a href="./contact.html">Kontak</a></li>
+                    </ul>
+                </div>
+
+                <!-- Programs -->
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="mb-4">Program Unggulan</h4>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Calistung (3-6 Tahun)</a></li>
+                        <li><a href="#">Matematika Logika</a></li>
+                        <li><a href="#">English for Kids</a></li>
+                        <li><a href="#">Seni Lukis &amp; Kriya</a></li>
+                        <li><a href="#">Tari Tradisional</a></li>
+                    </ul>
+                </div>
+
+                <!-- Newsletter / Contact -->
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="mb-4">Tetap Terhubung</h4>
+                    <p class="text-white-50 mb-3">Dapatkan info promo dan jadwal terbaru.</p>
+                    <div class="newsletter-form">
+                        <input type="email" placeholder="Alamat Email">
+                        <button type="button" aria-label="Subscribe"><i class="bi bi-send-fill"></i></button>
+                    </div>
+                    <div class="mt-4 pt-3 border-top border-white-10">
+                        <div class="d-flex align-items-center gap-3 mb-2">
+                            <i class="bi bi-geo-alt-fill text-primary"></i>
+                            <span class="text-white-50">Jl. Merpati No. 123, Jakarta</span>
+                        </div>
+                        <div class="d-flex align-items-center gap-3">
+                            <i class="bi bi-telephone-fill text-primary"></i>
+                            <span class="text-white-50">+62 812-3456-7890</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p class="mb-0 text-white-50">&copy; 2024 Sanggar Bunda Sari. All rights reserved.</p>
+                    <div class="footer-links">
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Terms of Service</a>
+                        <a href="#">Cookie Settings</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <!-- Main Custom JS -->
+    <script src="../static/js/main.js"></script>
+
+    </main>
+    </div>
+</body>
+</html>
